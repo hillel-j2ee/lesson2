@@ -4,6 +4,13 @@ CREATE TABLE warehouses (
     UNIQUE UQ_ADDRESS_1 (address),
     PRIMARY KEY (id)
 );
+
+CREATE TABLE kryvorotenkos_shop (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    address VARCHAR(255) NOT NULL,
+    UNIQUE UQ_ADDRESS_1 (address),
+    PRIMARY KEY (id)
+);
  
 CREATE TABLE items (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,

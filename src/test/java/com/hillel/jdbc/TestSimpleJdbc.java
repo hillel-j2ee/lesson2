@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import com.hillel.jdbc.dao.ItemDao;
+import com.hillel.jdbc.dao.KryvorotenkosShopDao;
+import com.hillel.jdbc.model.KryvorotenkosShop;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,6 +20,8 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 	private WarehouseDao warehouseDao;
 	@Autowired
 	private ItemDao itemDao;
+	@Autowired
+	private KryvorotenkosShopDao KryvorotenkosShopDao;
 	
 	@Test
 	public void testWarehouseCRUD() {
@@ -31,6 +35,10 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 		Warehouse warehouseFromDb = warehouseDao.findById(testWarehouse.getId());
 		// Сравнить вытащенный объект из базы данных с тестовым объектом
 		assertEquals(testWarehouse.getAddress(), warehouseFromDb.getAddress());
+
+		warehouseFromDb.setAddress("updated address wow");
+		warehouseDao.update(warehouseFromDb);
+
 		// Удалить тестовый объект в базе данных
 		warehouseDao.delete(warehouseFromDb);
 		// Найти удаленный объект в базе данных
@@ -52,10 +60,38 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 		Item itemFromDb = itemDao.findById(testItem.getId());
 		// Сравнить вытащенный объект из базы данных с тестовым объектом
 		assertEquals(testItem.getName(), itemFromDb.getName());
+
+		itemFromDb.setName("updated name wow");
+		itemDao.update(itemFromDb);
+
 		// Удалить тестовый объект в базе данных
 		itemDao.delete(itemFromDb);
 		// Найти удаленный объект в базе данных
 		Item removedItem = itemDao.findById(itemFromDb.getId());
+		// Сравнить вытащенный объект после удаления из базы данных на null
+		assertNull(removedItem);
+	}
+
+	@Test
+	public void testKryvorotenkosShopCRUD() {
+		String testData = "test shop address";
+		// Создать тестовый объект
+		KryvorotenkosShop testKryvorotenkosShop = new KryvorotenkosShop();
+		testKryvorotenkosShop.setAddress(testData);
+		// Сохранить тестовый объект в базе данных
+		KryvorotenkosShopDao.insert(testKryvorotenkosShop);
+		// Вытащить тестовый объект из базы данных
+		KryvorotenkosShop kryvorotenkosShopFromDb = KryvorotenkosShopDao.findById(testKryvorotenkosShop.getId());
+		// Сравнить вытащенный объект из базы данных с тестовым объектом
+		assertEquals(testKryvorotenkosShop.getAddress(), kryvorotenkosShopFromDb.getAddress());
+
+		kryvorotenkosShopFromDb.setAddress("updated address wow");
+		KryvorotenkosShopDao.update(kryvorotenkosShopFromDb);
+
+		// Удалить тестовый объект в базе данных
+		KryvorotenkosShopDao.delete(kryvorotenkosShopFromDb);
+		// Найти удаленный объект в базе данных
+		KryvorotenkosShop removedItem = KryvorotenkosShopDao.findById(kryvorotenkosShopFromDb.getId());
 		// Сравнить вытащенный объект после удаления из базы данных на null
 		assertNull(removedItem);
 	}

@@ -1,4 +1,4 @@
-package com.hillel.jdbc.dao.impl;
+package com.hillel.jdbc.dao.implementation;
 
 import com.hillel.jdbc.dao.ItemDao;
 import com.hillel.jdbc.model.Item;

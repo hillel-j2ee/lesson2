@@ -1,6 +1,10 @@
 INSERT INTO warehouses (address) VALUES ('ul. one, 5');
 INSERT INTO warehouses (address) VALUES ('ul. two, 4');
 INSERT INTO warehouses (address) VALUES ('ul. three, 7');
+
+INSERT INTO kryvorotenkos_shop (address) VALUES ('ul. one_kryvorotenkos_shop, 5_kryvorotenkos_shop');
+INSERT INTO kryvorotenkos_shop (address) VALUES ('ul. two_kryvorotenkos_shop, 4_kryvorotenkos_shop');
+INSERT INTO kryvorotenkos_shop (address) VALUES ('ul. three_kryvorotenkos_shop, 7_kryvorotenkos_shop');
  
 INSERT INTO items (name, warehouse_id) VALUES ('red table', 1);
 INSERT INTO items (name, warehouse_id) VALUES ('blue table', 1);
