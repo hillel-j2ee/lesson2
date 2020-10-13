@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class WarehouseDaoImpl implements WarehouseDao {
+public class WarehouseDaoImplementation implements WarehouseDao {
 	@Autowired
 	private DataSource dataSource;
 	

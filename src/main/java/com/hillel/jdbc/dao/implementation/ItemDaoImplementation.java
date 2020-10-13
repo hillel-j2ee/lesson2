@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ItemDaoImpl implements ItemDao {
+public class ItemDaoImplementation implements ItemDao {
 	@Autowired
 	private DataSource dataSource;
 
