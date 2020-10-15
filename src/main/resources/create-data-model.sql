@@ -5,11 +5,10 @@ CREATE TABLE warehouses (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE kryvorotenkos_shop (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    address VARCHAR(255) NOT NULL,
-    UNIQUE UQ_ADDRESS_1 (address),
-    PRIMARY KEY (id)
+create table if not exists kryvorotenkos_shop
+(
+    id      serial primary key,
+    address  varchar(255) not null,
 );
  
 CREATE TABLE items (
