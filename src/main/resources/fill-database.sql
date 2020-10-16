@@ -5,7 +5,12 @@ INSERT INTO warehouses (address) VALUES ('ul. three, 7');
 INSERT INTO kryvorotenkos_shop (address) VALUES ('ul. one_kryvorotenkos_shop, 5_kryvorotenkos_shop');
 INSERT INTO kryvorotenkos_shop (address) VALUES ('ul. two_kryvorotenkos_shop, 4_kryvorotenkos_shop');
 INSERT INTO kryvorotenkos_shop (address) VALUES ('ul. three_kryvorotenkos_shop, 7_kryvorotenkos_shop');
- 
+
+INSERT INTO vitaliy_user (created, status, name, email, password)
+            VALUES ('2020-02-24 20:24:01', 'ACTIVE', 'Sasha', 'sasha@bk.ru', 'wxc45x2sd');
+INSERT INTO vitaliy_user (created, status, name, email, password)
+            VALUES ('2020-10-15 20:24:01', 'ACTIVE', 'Tolik', 'tolik@bk.ru', 'sdf4t34csd');
+
 INSERT INTO items (name, warehouse_id) VALUES ('red table', 1);
 INSERT INTO items (name, warehouse_id) VALUES ('blue table', 1);
 INSERT INTO items (name, warehouse_id) VALUES ('green table', 1);
@@ -48,13 +53,13 @@ INSERT INTO items (name, warehouse_id) VALUES ('white cupboard', 3);
 INSERT INTO items (name, warehouse_id) VALUES ('red cupboard', 3);
 INSERT INTO items (name, warehouse_id) VALUES ('blue cupboard', 3);
 INSERT INTO items (name, warehouse_id) VALUES ('green cupboard', 3);
- 
+
 INSERT INTO providers (name) VALUES ('Vasya');
 INSERT INTO providers (name) VALUES ('Petya');
 INSERT INTO providers (name) VALUES ('Sasha');
 INSERT INTO providers (name) VALUES ('Anna');
 INSERT INTO providers (name) VALUES ('Lena');
- 
+
 INSERT INTO items_providers (item_id, provider_id) VALUES (1, 1);
 INSERT INTO items_providers (item_id, provider_id) VALUES (2, 2);
 INSERT INTO items_providers (item_id, provider_id) VALUES (3, 2);

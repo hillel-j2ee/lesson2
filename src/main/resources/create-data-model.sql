@@ -8,9 +8,19 @@ CREATE TABLE warehouses (
 create table if not exists kryvorotenkos_shop
 (
     id      serial primary key,
-    address  varchar(255) not null,
+    address  varchar(255) not null
 );
- 
+
+create table if not exists vitaliy_user
+(
+    id       serial primary key,
+    created  varchar(255),
+    status   varchar(255),
+    name     varchar(255),
+    email    varchar(255),
+    password varchar(255)
+);
+
 CREATE TABLE items (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -20,13 +30,13 @@ CREATE TABLE items (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
- 
+
 CREATE TABLE providers (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
- 
+
 CREATE TABLE items_providers (
     item_id INT UNSIGNED NOT NULL,
     provider_id INT UNSIGNED NOT NULL,

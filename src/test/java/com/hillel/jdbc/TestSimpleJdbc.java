@@ -5,14 +5,13 @@ import static org.junit.Assert.assertNull;
 
 import com.hillel.jdbc.dao.ItemDao;
 import com.hillel.jdbc.dao.KryvorotenkosShopDao;
-import com.hillel.jdbc.model.KryvorotenkosShop;
+import com.hillel.jdbc.dao.VitaliyUserDao;
+import com.hillel.jdbc.model.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import com.hillel.jdbc.dao.WarehouseDao;
-import com.hillel.jdbc.model.Item;
-import com.hillel.jdbc.model.Warehouse;
 
 @ContextConfiguration("classpath:spring-context.xml")
 public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
@@ -22,7 +21,9 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 	private ItemDao itemDao;
 	@Autowired
 	private KryvorotenkosShopDao KryvorotenkosShopDao;
-	
+	@Autowired
+	private VitaliyUserDao vitaliyUserDao ;
+
 	@Test
 	public void testWarehouseCRUD() {
 		String testData = "test address";
@@ -46,7 +47,7 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 		// Сравнить вытащенный объект после удаления из базы данных на null
 		assertNull(removedWarehouse);
 	}
-	
+
 	@Test
 	public void testItemCRUD() {
 		String testData = "test address";
@@ -94,5 +95,30 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 		KryvorotenkosShop removedItem = KryvorotenkosShopDao.findById(kryvorotenkosShopFromDb.getId());
 		// Сравнить вытащенный объект после удаления из базы данных на null
 		assertNull(removedItem);
+	}
+
+	@Test
+	public void testVitaliyUserVCRUD() {
+		String testData = "Sasha";
+		// Создать тестовый объект
+		VitaliyUser testVitaliyUser = new VitaliyUser();
+		testVitaliyUser.setName(testData);
+		testVitaliyUser.setStatus(VitaliyStatus.ACTIVE);
+		// Сохранить тестовый объект в базе данных
+		vitaliyUserDao.insert(testVitaliyUser);
+		// Вытащить тестовый объект из базы данных
+		VitaliyUser vitaliyUserFromDb = vitaliyUserDao.findById(testVitaliyUser.getId());
+		// Сравнить вытащенный объект из базы данных с тестовым объектом
+		assertEquals(testVitaliyUser.getName(), vitaliyUserFromDb.getName());
+
+		vitaliyUserFromDb.setName("Kolia");
+		vitaliyUserDao.update(vitaliyUserFromDb);
+
+		// Удалить тестовый объект в базе данных
+		vitaliyUserDao.delete(vitaliyUserFromDb);
+		// Найти удаленный объект в базе данных
+		VitaliyUser removedVitaliyUser = vitaliyUserDao.findById(vitaliyUserFromDb.getId());
+		// Сравнить вытащенный объект после удаления из базы данных на null
+		assertNull(removedVitaliyUser);
 	}
 }
