@@ -13,4 +13,37 @@ public class VitaliyBaseEntity {
     private Long id;
     private Date created;
     private VitaliyStatus status;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public VitaliyStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(VitaliyStatus status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "VitaliyBaseEntity{" +
+                "id=" + id +
+                ", created=" + created +
+                ", status=" + status +
+                '}';
+    }
 }
