@@ -3,6 +3,11 @@ package com.hillel.jdbc.model;
 import java.util.List;
 
 public class Book {
+    public static final String BOOK_TABLE = "book";
+    public static final String NAME_COLUMN = "name";
+    public static final String AUTHOR_COLUMN = "author";
+    public static final String GENRE_COLUMN = "genre";
+
     private Long id;
     private String name;
     private String author;

@@ -105,3 +105,12 @@ INSERT INTO items_providers (item_id, provider_id) VALUES (42, 1);
 INSERT INTO items_providers (item_id, provider_id) VALUES (1, 3);
 INSERT INTO items_providers (item_id, provider_id) VALUES (7, 1);
 INSERT INTO items_providers (item_id, provider_id) VALUES (7, 2);
+
+INSERT book
+VALUES
+(1, 'War and Peace', 'Lev Nikolaevich Tolstoy', 'romantic'),
+(2, 'Harry Potter and the Philosopher\'s Stone', 'Joanne Rowling', 'fantasy'),
+(3, 'Harry Potter and the Chamber of Secrets', 'Joanne Rowling', 'fantasy'),
+(4, 'Harry Potter and the Prisoner of Azkaban', 'Joanne Rowling', 'fantasy'),
+(5, 'Harry Potter and the Goblet of Fire', 'Joanne Rowling', 'fantasy'),
+(6, 'Harry Potter and the Order of the Phoenix', 'Joanne Rowling', 'fantasy');
