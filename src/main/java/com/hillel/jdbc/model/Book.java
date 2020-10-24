@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Book {
     private Long id;
+    private String name;
     private String author;
     private String genre;
 
@@ -13,6 +14,14 @@ public class Book {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAuthor() {
@@ -33,6 +42,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("Book{%d, %s, %s}", id, author, genre);
+        return String.format("Book{%d, %s, %s, %s}", id, name, author, genre);
     }
 }
