@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class HoncharenkoDaoImpl implements HoncharenkoShopDao<PhoneHoncharenko> {
     String SQL_DELETE = "DELETE FROM" + PhoneHoncharenko.TABLE_NAME + "WHERE" + PhoneHoncharenko.ID_COLUMN + " = ?";
-    String SQL_UPDATE = "UPDATE " + PhoneHoncharenko.TABLE_NAME + "set " + PhoneHoncharenko.MODEL_COLUMN + "= ?" + "set" + PhoneHoncharenko.PRICE_COLUMN + "= ? where " + Item.ID_COLUMN + " = ?";
+    String SQL_UPDATE = "UPDATE " + PhoneHoncharenko.TABLE_NAME + "set " + PhoneHoncharenko.MODEL_COLUMN + "= ?" + "set" + PhoneHoncharenko.PRICE_COLUMN + "= ? where " + PhoneHoncharenko.ID_COLUMN + " = ?";
     String SQL_FIND_ALL = "SELECT * FROM " + PhoneHoncharenko.TABLE_NAME;
     String SQL_FIND_BY_ID = SQL_FIND_ALL + " where " + PhoneHoncharenko.ID_COLUMN + " = ?";
     String SQL_INSERT = "insert into " + PhoneHoncharenko.TABLE_NAME + " (" + PhoneHoncharenko.MODEL_COLUMN + ", " + PhoneHoncharenko.PRICE_COLUMN + ") values (?, ?)";
