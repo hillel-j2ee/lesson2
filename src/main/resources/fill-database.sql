@@ -114,3 +114,7 @@ VALUES
 (4, 'Harry Potter and the Prisoner of Azkaban', 'Joanne Rowling', 'fantasy'),
 (5, 'Harry Potter and the Goblet of Fire', 'Joanne Rowling', 'fantasy'),
 (6, 'Harry Potter and the Order of the Phoenix', 'Joanne Rowling', 'fantasy');
+
+INSERT INTO phoneShop (model, price) VALUES ('iPhone', 20000);
+INSERT INTO phoneShop (model, price) VALUES ('Xiaomi', 5000);
+INSERT INTO phoneShop (model, price) VALUES ('Nokia', 11000);

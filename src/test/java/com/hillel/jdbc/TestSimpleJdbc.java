@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
+import java.util.List;
+
 @ContextConfiguration("classpath:spring-context.xml")
 public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 	@Autowired
@@ -22,6 +24,8 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 	private VitaliyUserDao vitaliyUserDao;
 	@Autowired
 	private BookDao bookDao;
+	@Autowired
+	private HoncharenkoShopDao honcharenkoShopDao;
 
 	@Test
 	public void testWarehouseCRUD() {
@@ -140,5 +144,35 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 
 		Book removedBook = bookDao.findById(bookFromDb.getId());
 		assertNull(removedBook);
+	}
+	@Test
+	public void testHoncharenkoShop() {
+		String testModel = "iPhone";
+		Integer testPrice = 14000;
+		// Создать тестовый объект
+		PhoneHoncharenko testPhoneHoncharenko = new PhoneHoncharenko();
+		testPhoneHoncharenko.setId(1L);
+		testPhoneHoncharenko.setModel(testModel);
+		testPhoneHoncharenko.setPrice(testPrice);
+		// Сохранить тестовый объект в базе данных
+		honcharenkoShopDao.save(testPhoneHoncharenko);
+		// Вытащить тестовый объект из базы данных
+		PhoneHoncharenko phoneHoncharenkoByID = honcharenkoShopDao.getById(testPhoneHoncharenko.getId()).get();
+		// Сравнить вытащенный объект из базы данных с тестовым объектом
+		assertEquals(phoneHoncharenkoByID.getModel(), testPhoneHoncharenko.getModel());
+		//Сравниваем количество элементов в списке
+		List<PhoneHoncharenko> phoneHoncharenkos = honcharenkoShopDao.getAll();
+		assertEquals(1, phoneHoncharenkos.size());
+
+		phoneHoncharenkoByID.setModel("samsung");
+		phoneHoncharenkoByID.setPrice(11000);
+		honcharenkoShopDao.update(phoneHoncharenkoByID);
+
+		// Удалить тестовый объект в базе данных
+		honcharenkoShopDao.delete(phoneHoncharenkoByID);
+		// Найти удаленный объект в базе данных
+		PhoneHoncharenko removedPhoneHoncharenko = honcharenkoShopDao.getById(phoneHoncharenkoByID.getId()).get();
+		// Сравнить вытащенный объект после удаления из базы данных на null
+		assertNull(removedPhoneHoncharenko);
 	}
 }

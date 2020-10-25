@@ -55,3 +55,10 @@ CREATE TABLE IF NOT EXISTS book(
   author VARCHAR(255) NOT NULL CHECK(author!=''),
   genre VARCHAR(255) NOT NULL CHECK(genre!='')
 );
+
+create table if not exists phoneShop
+(
+    id  INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    model  varchar(255) NOT NULL,
+    price INT NOT NULL
+);
