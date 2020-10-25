@@ -3,7 +3,8 @@ package com.hillel.jdbc.model;
 import java.util.List;
 
 public class Book {
-    public static final String BOOK_TABLE = "book";
+    public static final String TABLE_TITLE = "book";
+    public static final String ID_COLUMN = "id";
     public static final String NAME_COLUMN = "name";
     public static final String AUTHOR_COLUMN = "author";
     public static final String GENRE_COLUMN = "genre";
@@ -48,5 +49,37 @@ public class Book {
     @Override
     public String toString() {
         return String.format("Book{%d, %s, %s, %s}", id, name, author, genre);
+    }
+
+    public static class Builder {
+        private Book newBook;
+
+        public Builder() {
+            newBook = new Book();
+        }
+
+        public Builder withId(Long id) {
+            newBook.id = id;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            newBook.name = name;
+            return this;
+        }
+
+        public Builder withAuthor(String author) {
+            newBook.author = author;
+            return this;
+        }
+
+        public Builder withGenre(String genre) {
+            newBook.genre = genre;
+            return this;
+        }
+
+        public Book build(){
+            return newBook;
+        }
     }
 }

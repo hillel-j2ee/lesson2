@@ -26,6 +26,7 @@ public class ItemDaoImplementation implements ItemDao {
 				Item item = new Item();
 				item.setId(rs.getLong(Item.ID_COLUMN));
 				item.setName(rs.getString(Item.NAME_COLUMN));
+				item.setWarehouse_id(rs.getLong(Item.WAREHOUSE_ID_COLUMN));
 				result.add(item);
 			}
 		} catch (SQLException e) {

@@ -3,15 +3,12 @@ package com.hillel.jdbc;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import com.hillel.jdbc.dao.ItemDao;
-import com.hillel.jdbc.dao.KryvorotenkosShopDao;
-import com.hillel.jdbc.dao.VitaliyUserDao;
+import com.hillel.jdbc.dao.*;
 import com.hillel.jdbc.model.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import com.hillel.jdbc.dao.WarehouseDao;
 
 @ContextConfiguration("classpath:spring-context.xml")
 public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
@@ -22,7 +19,9 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	private KryvorotenkosShopDao KryvorotenkosShopDao;
 	@Autowired
-	private VitaliyUserDao vitaliyUserDao ;
+	private VitaliyUserDao vitaliyUserDao;
+	@Autowired
+	private BookDao bookDao;
 
 	@Test
 	public void testWarehouseCRUD() {
@@ -120,5 +119,26 @@ public class TestSimpleJdbc extends AbstractJUnit4SpringContextTests {
 		VitaliyUser removedVitaliyUser = vitaliyUserDao.findById(vitaliyUserFromDb.getId());
 		// Сравнить вытащенный объект после удаления из базы данных на null
 		assertNull(removedVitaliyUser);
+	}
+
+	@Test
+	public void testBookCRUD() {
+		String name = "book's name";
+		String author = "book's author";
+		String genre = "book's genre";
+
+		Book testBook = new Book.Builder().withName(name).withAuthor(author).withGenre(genre).build();
+
+		bookDao.insert(testBook);
+
+		Book bookFromDb = bookDao.findById(testBook.getId());
+		assertEquals(testBook.getName(), bookFromDb.getName());
+
+		bookFromDb.setName("absolutely different name");
+		bookDao.updateName(bookFromDb);
+		bookDao.delete(bookFromDb);
+
+		Book removedBook = bookDao.findById(bookFromDb.getId());
+		assertNull(removedBook);
 	}
 }
